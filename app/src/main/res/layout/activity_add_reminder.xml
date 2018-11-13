@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".activity.AddReminderActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:elevation="0dp"
+        app:title="Add Reminder" />
+
+
+    <EditText
+        android:id="@+id/remindertitle"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/opensansregular"
+        android:hint="Reminder Title"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/reminderdesc"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/border"
+        android:fontFamily="@font/opensansregular"
+        android:gravity="start"
+        android:hint="Reminder Description"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_marginRight="05dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:clickable="true"
+            android:fontFamily="@font/opensansbold"
+            android:foreground="@drawable/ripple_effect"
+            android:gravity="center"
+            android:text="26 Nov 2018" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_marginLeft="05dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:clickable="true"
+            android:fontFamily="@font/opensansbold"
+            android:foreground="@drawable/ripple_effect"
+            android:gravity="center"
+            android:text="12:42 AM" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/savebtn"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/opensansbold"
+            android:gravity="center"
+            android:text="Save"
+            android:textColor="#3CCD94"
+            android:textSize="21dp" />
+    </LinearLayout>
+
+</LinearLayout>

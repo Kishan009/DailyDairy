@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".activity.HowAreYouActivty">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:elevation="5dp"
+        app:title="@string/app_name" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_alignParentRight="true"
+                    android:background="#f5f4f4"
+                    android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:drawableTint="#000"
+                    android:fontFamily="@font/opensansregular"
+                    android:foreground="@drawable/ripple_effect"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="27 Nov 2018"
+                    android:textColor="#2d2c2c"
+                    android:textSize="21sp" />
+
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_alignParentLeft="true"
+                    android:background="#f5f4f4"
+                    android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:drawableTint="#000"
+                    android:fontFamily="@font/opensansregular"
+                    android:foreground="@drawable/ripple_effect"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="10:56 AM"
+                    android:textColor="#2d2c2c"
+                    android:textSize="21sp" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="#f5f4f4"
+                android:hint="Tiltle"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:background="#f5f4f4"
+                android:gravity="start"
+                android:hint="Description"
+                android:padding="10dp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Moods"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/moodChoosed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Activity"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/activityChoosed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Images"
+                    android:textSize="18sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/imageList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <include layout="@layout/note_sheet_bottom"></include>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/bottomFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_keyboard_arrow_up_black_24dp"
+        app:elevation="0dp"
+        app:layout_anchor="@+id/bottom_sheet"
+        app:layout_anchorGravity="top|end"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior" />
+</android.support.design.widget.CoordinatorLayout>

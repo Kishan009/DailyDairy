@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#faf8f8"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <LinearLayout
+        android:id="@+id/getmood"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/feeling" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/opensansregular"
+            android:gravity="center_vertical"
+            android:text="Mood"
+            android:textColor="#2d2c2c"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/getActivity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/activity" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/opensansregular"
+            android:gravity="center_vertical"
+            android:text="Activity"
+            android:textColor="#2d2c2c"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+     android:id="@+id/getImage"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:clickable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/image" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/opensansregular"
+            android:gravity="center_vertical"
+            android:text="Images"
+            android:textColor="#2d2c2c"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
