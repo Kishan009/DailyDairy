@@ -293,8 +293,6 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
             Repository repository = new Repository(getApplication());
             repository.InsertNote(noteTable);
             for (Uri uri : uriList) {
-                /*         copyFile(getRealPathFromURI(uri));*/
-
                 Log.e("File, ", getRealPathFromURI(uri));
             }
         }

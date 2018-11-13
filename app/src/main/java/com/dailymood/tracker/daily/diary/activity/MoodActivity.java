@@ -56,9 +56,7 @@ public class MoodActivity extends AppCompatActivity implements EmojiAdapter.Emoj
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
         ButterKnife.bind(this);
-
         repository = new Repository(getApplication());
-
         emojiarray = getResources().getStringArray(R.array.emoji_array);
         moodList.setLayoutManager(new GridLayoutManager(this, 5));
         emojiAdapter = new EmojiAdapter(this, emojiarray, this);
@@ -143,7 +141,7 @@ public class MoodActivity extends AppCompatActivity implements EmojiAdapter.Emoj
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void emojiClick(int color, int position) {
+    public void emojiClick( int position) {
         setdefault();
         color = Color.parseColor(ColorType.gray);
         this.position = position;
