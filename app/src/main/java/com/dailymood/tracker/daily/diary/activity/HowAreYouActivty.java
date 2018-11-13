@@ -1,11 +1,8 @@
 package com.dailymood.tracker.daily.diary.activity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.arch.persistence.room.util.StringUtil;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -15,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +27,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.dailymood.tracker.daily.diary.R;
 import com.dailymood.tracker.daily.diary.adapter.ImageAdapter;
 import com.dailymood.tracker.daily.diary.database.Repository;
@@ -39,15 +34,12 @@ import com.dailymood.tracker.daily.diary.database.table.ActivityTable;
 import com.dailymood.tracker.daily.diary.database.table.MoodTable;
 import com.dailymood.tracker.daily.diary.database.table.NoteTable;
 import com.dailymood.tracker.daily.diary.util.DateFormat;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;

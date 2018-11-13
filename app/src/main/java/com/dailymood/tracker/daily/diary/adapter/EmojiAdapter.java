@@ -37,7 +37,7 @@ public class EmojiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         String path = emojiarray[i];
-        ActivityImageAdapter.ActivityViewHolder holder = (ActivityImageAdapter.ActivityViewHolder) viewHolder;
+        EmojiViewHolder holder = (EmojiViewHolder) viewHolder;
         AssetManager assetManager = context.getAssets();
         try {
             InputStream istr = assetManager.open(path);
