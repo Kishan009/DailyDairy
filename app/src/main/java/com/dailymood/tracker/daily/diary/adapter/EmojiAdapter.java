@@ -13,8 +13,8 @@ import com.bumptech.glide.Glide;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class EmojiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+public class EmojiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+{
 
     Context context;
     String[] emojiarray;

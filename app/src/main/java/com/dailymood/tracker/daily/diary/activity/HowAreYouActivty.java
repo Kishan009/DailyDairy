@@ -21,12 +21,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import com.dailymood.tracker.daily.diary.R;
 import com.dailymood.tracker.daily.diary.adapter.ImageAdapter;
 import com.dailymood.tracker.daily.diary.database.Repository;
@@ -34,13 +36,19 @@ import com.dailymood.tracker.daily.diary.database.table.ActivityTable;
 import com.dailymood.tracker.daily.diary.database.table.MoodTable;
 import com.dailymood.tracker.daily.diary.database.table.NoteTable;
 import com.dailymood.tracker.daily.diary.util.DateFormat;
+import com.dailymood.tracker.daily.diary.util.RealPathUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.login.LoginException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,7 +90,7 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
     ArrayList<ActivityTable> tableList;
     MoodTable moodTable;
     List<String> activityID = new ArrayList<>();
-
+    Repository repository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +103,7 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
         imageAdapter = new ImageAdapter(this);
         imageList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         imageList.setAdapter(imageAdapter);
+        repository = new Repository(getApplication());
         setDateTime();
         txtDate.setOnClickListener(this);
         txtTime.setOnClickListener(this);
@@ -239,14 +248,6 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
         startActivityForResult(intent, 4444);
     }
 
-    public void getImages() {
-        hadleBottomSheet();
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 6666);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -282,12 +283,23 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
             String act = activityID.toString().replace("[", "").replace("]", "");
             noteTable.setNote_activity_id(act);
             noteTable.setNote_datetime(DateFormat.getDate(Minute, Hour, Day, Month, Year).getTime());
-            Repository repository = new Repository(getApplication());
             repository.InsertNote(noteTable);
             for (Uri uri : uriList) {
-                Log.e("File, ", getRealPathFromURI(uri));
+                copyFile(RealPathUtils.getRealPathFromURI_API19(HowAreYouActivty.this, uri));
             }
+
         }
+
+
+    }
+
+    public void getImages() {
+        hadleBottomSheet();
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 6666);
     }
 
 
@@ -297,32 +309,17 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
     }
 
-    public String getRealPathFromURI(Uri contentUri) {
 
-        Cursor cursor = null;
-        try {
-            String[] proj = {MediaStore.Images.Media.DATA};
-            cursor = getContentResolver().query(contentUri, proj, null, null,
-                    null);
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-    }
-
-    public void copyFile(String path) {
-        Toast.makeText(this, path, Toast.LENGTH_SHORT).show();
-        String sdCard = Environment.getExternalStorageDirectory().toString();
+    public void copyFile(String s) {
 
         try {
 
-            File sourceLocation = new File(path);
-            File targetLocation = new File(sdCard + "/MyNewFolder/" + sourceLocation.getName());
+            File sourceLocation = new File(s);
+
+            File sdCard = Environment.getExternalStorageDirectory();
+            File dir = new File(sdCard.getAbsolutePath() + "/New App");
+            dir.mkdirs();
+            File targetLocation = new File(dir, sourceLocation.getName());
 
             if (sourceLocation.exists()) {
 
@@ -339,15 +336,15 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
 
                 in.close();
                 out.close();
+                Log.e("FileCopied", "Done");
 
-                Log.e("FileCopied", path);
+            } else {
+                Log.e("FileCopied", "Location not found");
             }
 
-        } catch (Exception e) {
+        } catch (java.io.IOException e) {
             Log.e("FileCopied", e.getMessage());
         }
-
-
     }
 
 }
