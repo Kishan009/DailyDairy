@@ -14,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -29,11 +30,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.dailymood.tracker.daily.diary.MyApplication;
 import com.dailymood.tracker.daily.diary.R;
 import com.dailymood.tracker.daily.diary.adapter.ImageAdapter;
 import com.dailymood.tracker.daily.diary.database.Repository;
 import com.dailymood.tracker.daily.diary.database.table.ActivityTable;
 import com.dailymood.tracker.daily.diary.database.table.MoodTable;
+import com.dailymood.tracker.daily.diary.database.table.MultipleImageTable;
 import com.dailymood.tracker.daily.diary.database.table.NoteTable;
 import com.dailymood.tracker.daily.diary.util.DateFormat;
 import com.dailymood.tracker.daily.diary.util.RealPathUtils;
@@ -91,6 +94,7 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
     MoodTable moodTable;
     List<String> activityID = new ArrayList<>();
     Repository repository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +103,7 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sheetBehavior = BottomSheetBehavior.from(linearLayout);
-        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         imageAdapter = new ImageAdapter(this);
         imageList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         imageList.setAdapter(imageAdapter);
@@ -172,7 +176,7 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
     public void hadleBottomSheet() {
         if (sheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
             sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            bottomFab.setImageDrawable(getDrawable(R.drawable.ic_keyboard_arrow_down_black_24dp));
+            bottomFab.setImageDrawable(getDrawable(R.drawable.ic_close_black_24dp));
         } else {
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             bottomFab.setImageDrawable(getDrawable(R.drawable.ic_keyboard_arrow_up_black_24dp));
@@ -283,14 +287,13 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
             String act = activityID.toString().replace("[", "").replace("]", "");
             noteTable.setNote_activity_id(act);
             noteTable.setNote_datetime(DateFormat.getDate(Minute, Hour, Day, Month, Year).getTime());
+            noteTable.setCreated(System.currentTimeMillis());
+            noteTable.setUpdated(System.currentTimeMillis());
             repository.InsertNote(noteTable);
             for (Uri uri : uriList) {
                 copyFile(RealPathUtils.getRealPathFromURI_API19(HowAreYouActivty.this, uri));
             }
-
         }
-
-
     }
 
     public void getImages() {
@@ -311,16 +314,12 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
 
 
     public void copyFile(String s) {
-
         try {
-
             File sourceLocation = new File(s);
-
             File sdCard = Environment.getExternalStorageDirectory();
-            File dir = new File(sdCard.getAbsolutePath() + "/New App");
+            File dir = new File(sdCard.getAbsolutePath() + "/DailyDairy");
             dir.mkdirs();
             File targetLocation = new File(dir, sourceLocation.getName());
-
             if (sourceLocation.exists()) {
 
                 InputStream in = new FileInputStream(sourceLocation);
@@ -341,6 +340,13 @@ public class HowAreYouActivty extends AppCompatActivity implements View.OnClickL
             } else {
                 Log.e("FileCopied", "Location not found");
             }
+            MultipleImageTable imageTable = new MultipleImageTable();
+            imageTable.setNote_id((int) MyApplication.noteId);
+            imageTable.setImage_path(targetLocation.getPath());
+            imageTable.setCreated(System.currentTimeMillis());
+            imageTable.setUpdated(System.currentTimeMillis());
+            repository.InsertMultipleImage(imageTable);
+
 
         } catch (java.io.IOException e) {
             Log.e("FileCopied", e.getMessage());

@@ -44,7 +44,7 @@
                 android:id="@+id/moodname"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:fontFamily="@font/opensanslight"
+                android:fontFamily="@font/googlesansregular"
                 android:textSize="21dp"
                 android:text="kishan"
                 android:layout_marginLeft="15dp"

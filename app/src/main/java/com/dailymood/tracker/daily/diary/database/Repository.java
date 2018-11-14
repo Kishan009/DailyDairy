@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 
 import com.dailymood.tracker.daily.diary.database.async.ActivityAsync;
 import com.dailymood.tracker.daily.diary.database.async.MoodAsync;
+import com.dailymood.tracker.daily.diary.database.async.MultipleImageAsync;
 import com.dailymood.tracker.daily.diary.database.async.NoteAsync;
 import com.dailymood.tracker.daily.diary.database.async.ReminderAsync;
 import com.dailymood.tracker.daily.diary.database.crud.ActivityDao;
@@ -14,6 +15,7 @@ import com.dailymood.tracker.daily.diary.database.crud.NoteDao;
 import com.dailymood.tracker.daily.diary.database.crud.ReminderDao;
 import com.dailymood.tracker.daily.diary.database.table.ActivityTable;
 import com.dailymood.tracker.daily.diary.database.table.MoodTable;
+import com.dailymood.tracker.daily.diary.database.table.MultipleImageTable;
 import com.dailymood.tracker.daily.diary.database.table.NoteTable;
 import com.dailymood.tracker.daily.diary.database.table.ReminderTable;
 import com.dailymood.tracker.daily.diary.util.OperationType;
@@ -79,7 +81,8 @@ public class Repository {
     public LiveData<List<ReminderTable>> getReminderList() {
         return reminderDao.GetAllReminder();
     }
-
-
+    public void InsertMultipleImage(MultipleImageTable multipleImageTables) {
+        new MultipleImageAsync(multiIplemageDao, multipleImageTables, OperationType.Insert).execute();
+    }
 
 }

@@ -37,12 +37,12 @@
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="#f5f4f4"
                     android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:drawableTint="#000"
-                    android:fontFamily="@font/opensansregular"
+                    android:fontFamily="@font/googlesansregular"
                     android:foreground="@drawable/ripple_effect"
                     android:gravity="center_vertical"
                     android:padding="8dp"
@@ -54,12 +54,12 @@
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:background="#f5f4f4"
                     android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:drawableTint="#000"
-                    android:fontFamily="@font/opensansregular"
+                    android:fontFamily="@font/googlesansmedium"
                     android:foreground="@drawable/ripple_effect"
                     android:gravity="center_vertical"
                     android:padding="8dp"
@@ -75,6 +75,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:background="#f5f4f4"
+                android:fontFamily="@font/googlesansregular"
                 android:hint="Tiltle"
                 android:padding="10dp" />
 
@@ -84,12 +85,12 @@
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
                 android:background="#f5f4f4"
+                android:fontFamily="@font/googlesansregular"
                 android:gravity="start"
                 android:hint="Description"
                 android:padding="10dp" />
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -98,7 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/opensansbold"
+                    android:fontFamily="@font/googlesansmedium"
                     android:text="Moods"
                     android:textSize="18sp" />
 
@@ -107,6 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -118,7 +120,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/opensansbold"
+                    android:fontFamily="@font/googlesansmedium"
                     android:text="Activity"
                     android:textSize="18sp" />
 
@@ -139,7 +141,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/opensansbold"
+                    android:fontFamily="@font/googlesansmedium"
                     android:text="Images"
                     android:textSize="18sp" />
 
@@ -147,24 +149,22 @@
                     android:id="@+id/imageList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
-
-
         </LinearLayout>
-
-
     </ScrollView>
-
-    <include layout="@layout/note_sheet_bottom"></include>
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/bottomFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_keyboard_arrow_up_black_24dp"
-        app:elevation="0dp"
+        android:layout_margin="16dp"
+        app:elevation="20dp"
+        android:src="@drawable/ic_close_black_24dp"
         app:layout_anchor="@+id/bottom_sheet"
         app:layout_anchorGravity="top|end"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior" />
+
+    <include layout="@layout/note_sheet_bottom"></include>
+
+
 </android.support.design.widget.CoordinatorLayout>

@@ -18,7 +18,7 @@
             android:id="@+id/Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/opensansbold"
+            android:fontFamily="@font/googlesansbold"
             android:text="title"
             android:textColor="#383737"
             android:textSize="21sp" />
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/opensanssemibold"
+            android:fontFamily="@font/googlesansbold"
             android:text="Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make"
             android:textColor="#383737"
             android:textSize="16sp" />
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/opensanssemibold"
+            android:fontFamily="@font/googlesansbold"
             android:text="26 November 2018" />
 
 
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/opensanssemibold"
+                android:fontFamily="@font/googlesansbold"
                 android:text="4:30 AM" />
 
         </RelativeLayout>

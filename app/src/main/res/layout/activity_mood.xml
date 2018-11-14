@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="20"
             android:background="@null"
-            android:fontFamily="@font/opensansregular"
+            android:fontFamily="@font/googlesansregular"
             android:hint="Mood..."
             android:maxLines="1" />
 

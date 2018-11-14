@@ -13,7 +13,7 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 public interface MultiIplemageDao {
 
   @Insert(onConflict = IGNORE)
-  void InsertImage(List<MultipleImageTable> multipleImageTables);
+  long InsertImage(MultipleImageTable multipleImageTables);
 
   @Query("Delete from multiple_image Where note_id = :id")
   void DeleteImage(int id);
