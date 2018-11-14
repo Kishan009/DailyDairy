@@ -28,7 +28,7 @@
         <LinearLayout
             android:id="@+id/getmood"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="45dp"
             android:clickable="true"
             android:foreground="@drawable/ripple_effect"
             android:gravity="center_vertical"
@@ -36,8 +36,8 @@
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/feeling" />
 
@@ -45,10 +45,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginLeft="15dp"
-                android:fontFamily="@font/googlesansmedium"
+                android:fontFamily="@font/googlesansregular"
                 android:gravity="center_vertical"
                 android:text="Mood"
-                android:textColor="#7e7d7d"
+                android:textColor="#303030"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -57,7 +57,7 @@
         <LinearLayout
             android:id="@+id/getActivity"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="45dp"
             android:clickable="true"
             android:foreground="@drawable/ripple_effect"
             android:gravity="center_vertical"
@@ -65,19 +65,19 @@
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/activity" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="45dp"
                 android:layout_marginLeft="15dp"
-                android:fontFamily="@font/googlesansmedium"
+                android:fontFamily="@font/googlesansregular"
                 android:gravity="center_vertical"
                 android:text="Activity"
-                android:textColor="#7e7d7d"
+                android:textColor="#303030"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -86,7 +86,7 @@
         <LinearLayout
             android:id="@+id/getImage"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="45dp"
             android:clickable="true"
             android:foreground="@drawable/ripple_effect"
             android:gravity="center_vertical"
@@ -94,8 +94,8 @@
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/image" />
 
@@ -103,10 +103,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginLeft="15dp"
-                android:fontFamily="@font/googlesansmedium"
+                android:fontFamily="@font/googlesansregular"
                 android:gravity="center_vertical"
                 android:text="Images"
-                android:textColor="#7e7d7d"
+                android:textColor="#303030"
                 android:textSize="16sp" />
         </LinearLayout>
 
